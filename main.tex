@@ -72,4 +72,168 @@ void reordenar(int n, char *x[]) /* reordenar la lista de cadenas */
 }
 \end{minted}
 
+\begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
+
+/* ejemplo 10.29 p. 389 */
+
+int procesar(int (*) (int, int); /* prototipo de función (anfitriona) */
+int func1(int, int); /* prototipo de función (huésped) */
+int func2(int, int); /* prototipo de función (huésped) */
+
+main()
+{
+    int i, j;
+    i = procesar (func1) ; /* se pasa func1 a procesar; devuelve un va-
+                              lor para i */
+    j = procesar (func2);  /* se pasa func2 a procesar; devuelve un va-
+                              lor para j */
+}
+
+procesar(int (*pf) (int, int)) /* definición de función anfitriona */
+                               /* (el argumento formal es un puntero 
+                                  a una función) */
+{
+    c = (*pf) (a, b);  /* acceso a la función pasada a esta función; 
+                          devuelve un valor para c */
+    return(c); 
+}
+
+funcl(int a, int b) /* definición de función huésped */
+{
+    int c;
+    c =             /* utiliza a y b para evaluar c */
+    return(c); 
+}
+
+func2(int x, int y) /* definición de función huésped */
+{
+    int z;
+    z =             /* utiliza x e y para evaluar z */
+    return (z);  
+}
+\end{minted}
+
+\begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
+
+/* cálculos financieros personales */
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
+/* prototipos de funciones */
+void tabla(double (*pf) (double i, int m, double n), double a, int m,
+double n),
+double md1(double i, int m, double n),
+double md2(double i, int m, double n),
+double md3(double i, int m, double n),
+main ()
+{
+/* calcular el valor futuro de una serie de depósitos mensuales * /
+int m·, /* número de períodos de composición por año */
+double n, /* número de años */
+double a¡ /* cantidad de cada pago mensual */
+char free; /* indicador de frecuencia de composición */
+/* entrada de datos */
+printf ( "\nVALOR FUTURO DE UNA SERIE DE DEPOSITaS MENSUALES\n\n") ;
+printf ("Cantidad de cada pago mensual: "),
+scanf ("%lf", &a),
+printf (lINúmero de años: 11);
+scanf("%lf ll
+, &n)¡
+/* introducir frecuencia de composición */
+do {
+printf ( 11 Frecuencia de composición (Al Sr T, M, D, e): ");
+scanf (" %ls", &frec),
+frec = toupper (frec) ;. / * convertir a mayúsculas * /
+if (frec == 'A') {
+ro ;;;; 1;
+printf (" \nComposición anual \n") ;
+}
+else if (frec == ' S') {
+ro= 2;
+printf (" \nComposición semestral \n") ,
+}
+else if (frec == 'T') {
+ro = 4;
+printf (" \nComposición trimestral \n") ;
+}
+else if (frec == 'M') {
+m = 12;
+printf (" \nComposición mensual \n") ,
+}
+394 PROGRAMACiÓN EN C
+else if (frec == 'D') {
+m = 360;
+printf (" \nComposición diaria \n" ) ;
+}
+else if (frec == 'C') {
+ro = Oi
+printf (" \nComposición continua\n" ) ;
+}
+else
+printf("\nERROR - Por favor repita\n\n");
+} while (frec != 'A' && frec != 'S' && frec != 'T' &&
+free 1= 'M' && free != 'D' && free != 'e/);
+/* realizar los cálculos */
+if (frec == 'C')
+tabla (md3 , a, m, n); /* composición continua */
+else if (frec 'D')
+tabla (md2, a, m, n); /* composición diaria * /
+else
+tabla(mdl, a, mI n); /* composición anual, semestral, trimestral
+o mensual */
+}
+void tabla (double (*pf) (double i, int m, double n), double a, int m,
+double n)
+/ * generador de la tabla (esta función acepta un puntero a otra
+función como argumento)
+NOTA: double (*pf) (double i, int m, double n) es un PUNTERO A
+FUNCION */
+{
+int cont¡
+double i;
+double f;
+/* contador del bucle */
+/* tasa de interés anual */
+/* valor futuro */
+}
+printf (" \nTasa de interés
+for (cont = 1; cont <= 20;
+i :::; 0.01 * cont¡
+f = a * (*pf) (i, m, n);
+printf(" %2d
+}
+return¡
+Cantidad futura\n\n");
+++cont) {
+/ * EL ACCESO A LA FUNCION
+COMO UN PUNTERO */
+%.2f\n", cont, f);
+SE PASA
+double md1(doub1e i, int m, double n)
+/ * depósitos mensuales, composición periódica * /
+{
+PUNTEROS 395
+double factor, razon;
+factor = 1 + i/m;
+razon = 12 * (pow(factor, m*n) - 1) / i;
+return(razon) ;
+}
+double md2(double i, int m, doub1e n)
+/* depósitos mensuales, composición diaria */
+{
+double factor, razon;
+factor = 1 + i/m;
+razon = (pow(factor, m*n) - 1) / (pow(factor, m/12) - 1);
+return(razon) ;
+}
+double md3(double i, int nulo, doub1e n)
+/ * depósitos mensuales, composición continua * /
+{
+double razon;
+razon = (exp(i*n) - 1) / (exp(i/12) - 1);
+return(razon) ;
+}
+\end{minted}
+
 \end{document}

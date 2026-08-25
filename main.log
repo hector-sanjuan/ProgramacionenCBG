@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.8.7)  24 AUG 2026 11:50
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.8.7)  24 AUG 2026 20:35
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -457,19 +457,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 \pydata@fh@0=\write4
 
 \openout4 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
-runsystem(latexminted config  --timestamp 20260824115035 FAD58DE7366495DB4650CFE
+runsystem(latexminted config  --timestamp 20260824203532 FAD58DE7366495DB4650CFE
 FAC2FCD61)...executed.
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260824115035 FAD58DE7366495DB46
+runsystem(latexminted cleanconfig  --timestamp 20260824203532 FAD58DE7366495DB46
 50CFEFAC2FCD61)...executed.
 
 (./_minted/default.style.minted)
-\openout4 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
-
-runsystem(latexminted highlight  --timestamp 20260824115035 FAD58DE7366495DB4650
-CFEFAC2FCD61)...executed.
-
-(./_minted/C7F50B46B2D9B2DAE8953F9C526736AD.highlight.minted
+(./_minted/787658397332A544DBD8024420C50160.highlight.minted
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 11.
 
@@ -477,13 +472,15 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 [1
 
 {g:/texliveinst/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(./_minted/7B1016964D6889CA96E7633A9C4FA7E2.highlight.minted
 
-[2]
-\openout4 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
+[2]) (./_minted/07A7B74176E8AF71265145AB8A1396E6.highlight.minted
 
-runsystem(latexminted clean  --timestamp 20260824115035 FAD58DE7366495DB4650CFEF
-AC2FCD61)...executed.
- (./main.aux)
+[3]
+
+[4])
+
+[5] (./main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
@@ -491,23 +488,23 @@ L3 programming layer <2025-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 10449 strings out of 470118
+ 10603 strings out of 470118
  100000,953878 words of node,token memory allocated
  406 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 48 glue_spec,
  4 attribute_list, 1 write nodes
-   avail lists: 2:3490,3:89,4:2092,5:472,7:3251,9:1156,12:1
- 38691 multiletter control sequences out of 65536+600000
+   avail lists: 2:3650,3:93,4:2392,5:646,7:3544,9:1312,12:1
+ 38837 multiletter control sequences out of 65536+600000
  28 fonts using 1569839 bytes
- 85i,7n,92p,474b,692s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,9n,92p,490b,810s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <g:/texliveinst/2025/texmf-dist/fonts/opentype/public/qualitype/QTBasker.otf><g:
 /texliveinst/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf><g:/t
 exliveinst/2025/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf><g:/texl
 iveinst/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf>
-Output written on main.pdf (2 pages, 18872 bytes).
+Output written on main.pdf (5 pages, 35773 bytes).
 
-PDF statistics: 39 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+PDF statistics: 48 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

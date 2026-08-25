@@ -1,0 +1,40 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+
+\PYG{c+cm}{/* ejemplo 10.29 p. 389 */}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{procesar}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{);}\PYG{+w}{ }\PYG{c+cm}{/* prototipo de función (anfitriona) */}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{func1}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{);}\PYG{+w}{ }\PYG{c+cm}{/* prototipo de función (huésped) */}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{func2}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{);}\PYG{+w}{ }\PYG{c+cm}{/* prototipo de función (huésped) */}
+
+\PYG{n}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{j}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{procesar}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funcl}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* se pasa func1 a procesar; devuelve un va\PYGZhy{}}
+\PYG{c+cm}{                              lor para i */}
+\PYG{+w}{    }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{procesar}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{func2}\PYG{p}{);}\PYG{+w}{  }\PYG{c+cm}{/* se pasa func2 a procesar; devuelve un va\PYGZhy{}}
+\PYG{c+cm}{                              lor para j */}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{procesar}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{pf}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{))}\PYG{+w}{ }\PYG{c+cm}{/* definición de función anfitriona */}
+\PYG{+w}{                               }\PYG{c+cm}{/* (el argumento formal es un puntero}
+\PYG{c+cm}{                                  a una función) */}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{c}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{pf}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{);}\PYG{+w}{  }\PYG{c+cm}{/* acceso a la función pasada a esta función;}
+\PYG{c+cm}{                          devuelve un valor para c */}
+\PYG{+w}{    }\PYG{k}{return}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{funcl}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{c+cm}{/* definición de función huésped */}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{c}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{             }\PYG{c+cm}{/* utiliza a y b para evaluar c */}
+\PYG{+w}{    }\PYG{k}{return}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{func2}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{y}\PYG{p}{)}\PYG{+w}{ }\PYG{c+cm}{/* definición de función huésped */}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{z}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{z}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{             }\PYG{c+cm}{/* utiliza x e y para evaluar z */}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{z}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
