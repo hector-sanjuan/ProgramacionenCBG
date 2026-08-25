@@ -9,7 +9,7 @@
 \PYG{n}{main}\PYG{p}{()}
 \PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{j}\PYG{p}{;}
-\PYG{+w}{    }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{procesar}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funcl}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* se pasa func1 a procesar; devuelve un va\PYGZhy{}}
+\PYG{+w}{    }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{procesar}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{func1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* se pasa func1 a procesar; devuelve un va\PYGZhy{}}
 \PYG{c+cm}{                              lor para i */}
 \PYG{+w}{    }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{procesar}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{func2}\PYG{p}{);}\PYG{+w}{  }\PYG{c+cm}{/* se pasa func2 a procesar; devuelve un va\PYGZhy{}}
 \PYG{c+cm}{                              lor para j */}
