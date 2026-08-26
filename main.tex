@@ -5,7 +5,7 @@
 \author{Hector SanjuanG}
 \date{February 2026}
 
-\usepackage[paperwidth=21.6cm,paperheight=27.9cm,margin=1.3cm]{geometry}
+\usepackage[paperwidth=18.3cm,paperheight=23.6cm,margin=1.3cm]{geometry}
 \usepackage{fontspec}
 \setmainfont{QTBasker}
 
@@ -74,6 +74,107 @@ void reordenar(int n, char *x[]) /* reordenar la lista de cadenas */
 
 \begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
 
+/* Ejemplo 10.27 p. 382 */
+static char *nombres[10] = {
+"PACIFICO",
+"ATLANTICO",
+"INDICO",
+"CARIBE",
+"BERING",
+"NEGRO",
+"ROJO",
+"NORTE",
+"BALTICO",
+"CASPIO"
+};
+
+\end{minted}
+
+\begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
+/* Ejemplo 10.28 p. 383 */
+/* convertir una fecha numérica (mm dd aaaa) en "día de la semana,
+   mes, día, año"
+   
+   (por ejemplo: 5 24 1997 -> "Sábado, Mayo 24, 1997") */
+   
+#include <stdio.h>
+void leerentrada(int *pm, int *pd, int *pa); /* prototipo de función */
+int convertir(int mm, int dd, int aa); /* prototipo de función */
+
+main()
+{
+    int mm, dd, aa;
+    int dia_semana; /* día de la semana (0 - > Domingo,
+                                         1 -> Lunes,
+                                         ...
+                                         6 -> Sábado */
+                                         
+    static char *diasemana[] = {"Domingo", "Lunes", "Martes",
+                                "Miércoles", "Jueves", "Viernes",
+                                "Sábado"};
+                                         
+    static char *mes[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo",
+                          "Junio", "Julio", "Agosto", "Septiembre",
+                          "Octubre", "Novíembre", "Diciembre"};
+
+
+    /* mensaje de entrada */
+    printf ("Rutina de conversión de fecha\n Para PARAR, introducir 0 0 0");
+    leerentrada (&mm, &dd, &aa);
+    
+    /* convertir fecha a día numérico de la semana */
+    while (mm > 0) {
+        dia_semana = convertir (mm, dd, aa);
+        printf("\n%s, %s %d, %d", diasemana[dia_semana], mes[mm-l], dd, aa);
+        leerentrada(&mm, &dd, &aa);
+    }
+}
+
+void leerentrada (int *pm, int *pd, int *pa) / * leer la fecha numérica * /
+{
+    printf("\n\nIntroducir mm dd aaaa: ");
+    scanf("%d %d %d", pm,  pd, pa);
+    return;
+}
+
+int convertir(int mm, int dd, int aa) /* convertir una fecha en el 
+                                         día de la semana */
+{
+    long ndias;     /* número de días desde el comienzo de 1900 */
+    long nciclos;   /* número de ciclos de 4 años después de 1900 */
+    int nanios;     /* número de años después del último ciclo de 4 años */
+    int dia;        /* día de la semana (0, 1, 2, 3, 4, 5 o 6) */
+
+    /* conversiones numéricas */
+    aa -= 1900;
+    ndias = (long) (30.42 * (mm - 1)) + dd; /* día aproximado del año */
+    if (mm == 2) ++ndias                    /* ajuste para febrero */
+    if ((mm > 2) && (mm < 8)) --ndias;      /* ajuste para marzo-ju-
+                                               lio */
+    if ((aa % 4 == 0) && (mm > 2)) ++ndias; /* ajuste para el año bi-
+                                               siesto */
+    
+    nciclos = aa / 4;                       /* ciclos de 4 años des-
+                                               pués de 1900 */
+    ndias += nciclos * 1461;                /* añadir días por ciclos 
+                                               de 4 años */
+    
+    nanios = aa % 4;        /* años después del último ciclo de 4 años 
+                               */
+    if (nanios > 0)         /* añadir días por años después del último
+                               ciclo */
+        ndias += 365 * nanios + 1;
+
+    if (ndias > 59) --ndias;/* ajustar para 1900 (NO año bisiesto) */
+    
+    dia = ndias % 7;
+    
+    return(dia) ;
+}
+\end{minted}
+
+\begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
+
 /* ejemplo 10.29 p. 389 */
 
 int procesar(int (*) (int, int); /* prototipo de función (anfitriona) */
@@ -113,127 +214,216 @@ func2(int x, int y) /* definición de función huésped */
 }
 \end{minted}
 
+
+
+
 \begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
 
 /* cálculos financieros personales */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+
 /* prototipos de funciones */
 void tabla(double (*pf) (double i, int m, double n), double a, int m,
-double n),
-double md1(double i, int m, double n),
-double md2(double i, int m, double n),
-double md3(double i, int m, double n),
-main ()
+          double n);
+double md1(double i, int m, double n);
+double md2(double i, int m, double n);
+double md3(double i, int m, double n);
+
+main() /* calcular el valor futuro de una serie de depósitos men-
+          suales */
 {
-/* calcular el valor futuro de una serie de depósitos mensuales * /
-int m·, /* número de períodos de composición por año */
-double n, /* número de años */
-double a¡ /* cantidad de cada pago mensual */
-char free; /* indicador de frecuencia de composición */
-/* entrada de datos */
-printf ( "\nVALOR FUTURO DE UNA SERIE DE DEPOSITaS MENSUALES\n\n") ;
-printf ("Cantidad de cada pago mensual: "),
-scanf ("%lf", &a),
-printf (lINúmero de años: 11);
-scanf("%lf ll
-, &n)¡
-/* introducir frecuencia de composición */
-do {
-printf ( 11 Frecuencia de composición (Al Sr T, M, D, e): ");
-scanf (" %ls", &frec),
-frec = toupper (frec) ;. / * convertir a mayúsculas * /
-if (frec == 'A') {
-ro ;;;; 1;
-printf (" \nComposición anual \n") ;
+    int m;     /* número de períodos de composición por año */
+    double n;  /* número de años */
+    double a;  /* cantidad de cada pago mensual */
+    char frec; /* indicador de frecuencia de composición */
+    
+    /* entrada de datos */
+    printf("\nVALOR FUTURO DE UNA SERIE DE DEPOSITOS MENSUALES\n\n");
+    printf("Cantidad de cada pago mensual: ");
+    scanf("%lf", &a);
+    printf("Número de años: ");
+    scanf("%lf", &n);
+
+    /* introducir frecuencia de composición */
+    do {
+            printf ("Frecuencia de composición (A, S, T, M, D, C): ");
+            scanf("%1s", &frec),
+            frec = toupper (frec);    /* convertir a mayúsculas */
+            if (frec == 'A') { 
+                m = 1; 
+                printf("\nComposición anual \n"); 
+            }
+            else if (frec == 'S') { 
+                m = 2; 
+                printf("\nComposición semestral \n");
+            }
+            else if (frec == 'T') { 
+                m = 4; 
+                printf("\nComposición trimestral \n");
+            }
+            else if (frec == 'M') { 
+                m = 12; 
+                printf("\nComposición mensual \n"); 
+            }
+            else if (frec == 'D') { 
+                m = 360; 
+                printf("\nComposición diaria \n" );
+            }
+            else if (frec == 'C') { 
+                m = 0; 
+                printf("\nComposición continua\n" );
+            }
+            else 
+                printf("\nERROR - Por favor repita\n\n");
+    } while (frec != 'A' && frec != 'S' && frec != 'T' && 
+             frec != 'M' && frec != 'D' && frec != 'C');
+
+    /* realizar los cálculos */
+    if (frec == 'C') 
+        tabla (md3 , a, m, n); /* composición continua */
+    else if (frec 'D') 
+        tabla (md2, a, m, n); /* composición diaria */
+    else 
+        tabla(md1, a, m, n); /* composición anual, semestral, tri-
+                               mestral o mensual */
 }
-else if (frec == ' S') {
-ro= 2;
-printf (" \nComposición semestral \n") ,
-}
-else if (frec == 'T') {
-ro = 4;
-printf (" \nComposición trimestral \n") ;
-}
-else if (frec == 'M') {
-m = 12;
-printf (" \nComposición mensual \n") ,
-}
-394 PROGRAMACiÓN EN C
-else if (frec == 'D') {
-m = 360;
-printf (" \nComposición diaria \n" ) ;
-}
-else if (frec == 'C') {
-ro = Oi
-printf (" \nComposición continua\n" ) ;
-}
-else
-printf("\nERROR - Por favor repita\n\n");
-} while (frec != 'A' && frec != 'S' && frec != 'T' &&
-free 1= 'M' && free != 'D' && free != 'e/);
-/* realizar los cálculos */
-if (frec == 'C')
-tabla (md3 , a, m, n); /* composición continua */
-else if (frec 'D')
-tabla (md2, a, m, n); /* composición diaria * /
-else
-tabla(mdl, a, mI n); /* composición anual, semestral, trimestral
-o mensual */
-}
+
 void tabla (double (*pf) (double i, int m, double n), double a, int m,
-double n)
-/ * generador de la tabla (esta función acepta un puntero a otra
-función como argumento)
-NOTA: double (*pf) (double i, int m, double n) es un PUNTERO A
-FUNCION */
+            double n)
+/* generador de la tabla (esta función acepta un puntero a otra
+   función como argumento) 
+   NOTA: double (*pf) (double i, int m, double n) es un PUNTERO A
+   FUNCION */
 {
-int cont¡
-double i;
-double f;
-/* contador del bucle */
-/* tasa de interés anual */
-/* valor futuro */
+    int cont;   /* contador del bucle */
+    double i;   /* tasa de interés anual */
+    double f;   /* valor futuro */
+
+    printf("\nTasa de interés   Cantidad futura\n\n");
+    for (cont = 1; cont <= 20; ++cont) {
+        i = 0.01 * cont;
+        f = a * (*pf) (i, m, n); /* EL ACCESO A LA FUNCION SE PASA
+                                    COMO UN PUNTERO */
+        printf("      %2d           %.2f\n", cont, f);
+    }
+    return;
 }
-printf (" \nTasa de interés
-for (cont = 1; cont <= 20;
-i :::; 0.01 * cont¡
-f = a * (*pf) (i, m, n);
-printf(" %2d
-}
-return¡
-Cantidad futura\n\n");
-++cont) {
-/ * EL ACCESO A LA FUNCION
-COMO UN PUNTERO */
-%.2f\n", cont, f);
-SE PASA
+
 double md1(doub1e i, int m, double n)
-/ * depósitos mensuales, composición periódica * /
+/* depósitos mensuales, composición periódica */
 {
-PUNTEROS 395
-double factor, razon;
-factor = 1 + i/m;
-razon = 12 * (pow(factor, m*n) - 1) / i;
-return(razon) ;
+    double factor, razon;
+    factor = 1 + i/m;
+    razon = 12 * (pow(factor, m*n) - 1) / i;
+    return(razon) ;
 }
+
 double md2(double i, int m, doub1e n)
 /* depósitos mensuales, composición diaria */
 {
-double factor, razon;
-factor = 1 + i/m;
-razon = (pow(factor, m*n) - 1) / (pow(factor, m/12) - 1);
-return(razon) ;
+    double factor, razon;
+    factor = 1 + i/m;
+    razon = (pow(factor, m*n) - 1) / (pow(factor, m/12) - 1);
+    return(razon);
 }
+
 double md3(double i, int nulo, doub1e n)
-/ * depósitos mensuales, composición continua * /
+/* depósitos mensuales, composición continua */
 {
-double razon;
-razon = (exp(i*n) - 1) / (exp(i/12) - 1);
-return(razon) ;
+    double razon;
+    razon = (exp(i*n) - 1) / (exp(i/12) - 1);
+    return(razon);
 }
+\end{minted}
+
+\begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
+/* ejemplo 10.31 */
+
+punteros a enteacepta
+un argumento
+carácter y devuelve
+398 PROGRAMACiÓN EN C
+int *p;             /* p es un puntero a una cantidad entera */
+int *p[10]; /* p es un array de 10
+int (*p) [10]; /* p es un puntero a un array de 10 enteros
+int *p (va id) ; /* p es una función que devuelve un puntero
+                    a entero * /
+int p (char *a); /* p es una función que que es un puntero a
+un entero */
+int *p(char *a); /* p es una función que acepta un argumento
+                    que es un puntero a carácter y devuelve
+                    un puntero a un entero */
+int (*p) (char *a);
+int (*p (char *a)) [10];
+int pichar (*a) [Ji;
+int p(char *a[]);
+int *p (char a [ ] )
+int *p(char (*a) [Ji;
+int *p(char *a[]);
+int (*p) (char (*a) []);
+int * (*p) (char (*a) [J);
+int *(*p)(char *a[]);
+int· (*p[10]) (void);
+
+
+ros */
+
+*/
+
+
+
+/* p es un puntero a una función que acepta
+un argumento que es un puntero a carácter
+y devuelve un entero */
+/* p es una función que acepta un argumento
+que es un puntero a carácter y devue1ve
+un puntero a un array de diez
+enteros */
+/* p es una función que acepta un argumento
+que es un puntero a un array de caracteres
+y devuelve un entero */
+/* p es una función que acepta un argumento
+que es un array de punteros a caracteres
+y devuelve un entero */
+/* p es una función que acepta un argumento
+que es un array de caracteres y devuelve
+un puntéro a entero */
+/* p es una función que acepta un argumento
+que es un puntero a un array de caracteres
+y devuelve un puntero a entero * /
+/* p es una función que acepta un argumento
+que es un array de punteros a
+caracteres y devuelve un puntero a entero
+*/
+/* p es un puntero auna función que acepta
+un argumento que "s un puntero a unarray
+de caracteres y devuelve un. entero * /
+* p es un puntero a una función que aCf,pta
+un argum"nto que es un puntero a un array
+de caractéres y devuelve un puntero a
+entero '* /
+/* p es un pUntero a una función que acepta
+un argumento que es un array de punteros
+a caracteres y devuelve un puntero a entero
+*/
+/ * p es un array dé 10 punteros a fUIlción;
+cada función devue1véun entero * /
+
+int (*p[10]) (char a); /* p es un array de 10 punteros a función;
+cada función acepta un argumento que es un
+carácter y devuelve un entero */
+int * (*p[10]) (char a); /* p es un array de 10 punteros a función;
+cada función acepta un argumento que es
+un carácter y devuelve un puntero a entero
+*/
+int * (*p[10]) (char *a); /* p es un array de 10 punteros a función;
+cada función acepta un argumento que es
+un puntero a carácter y devuelve un puntero
+a entero * /
 \end{minted}
 
 \end{document}

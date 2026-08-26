@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+
+\PYG{c+cm}{/* Ejemplo 10.27 p. 382 */}
+\PYG{k}{static}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{nombres}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{l+s}{\PYGZdq{}PACIFICO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}ATLANTICO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}INDICO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}CARIBE\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}BERING\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}NEGRO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}ROJO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}NORTE\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}BALTICO\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s}{\PYGZdq{}CASPIO\PYGZdq{}}
+\PYG{p}{\PYGZcb{};}
+
+\end{MintedVerbatim}

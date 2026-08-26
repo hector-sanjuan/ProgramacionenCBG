@@ -1,0 +1,82 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* Ejemplo 10.28 p. 383 */}
+\PYG{c+cm}{/* convertir una fecha numérica (mm dd aaaa) en \PYGZdq{}día de la semana,}
+\PYG{c+cm}{   mes, día, año\PYGZdq{}}
+
+\PYG{c+cm}{   (por ejemplo: 5 24 1997 \PYGZhy{}\PYGZgt{} \PYGZdq{}Sábado, Mayo 24, 1997\PYGZdq{}) */}
+
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{leerentrada}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pa}\PYG{p}{);}\PYG{+w}{ }\PYG{c+cm}{/* prototipo de función */}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{convertir}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{aa}\PYG{p}{);}\PYG{+w}{ }\PYG{c+cm}{/* prototipo de función */}
+
+\PYG{n}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{aa}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{dia\PYGZus{}semana}\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* día de la semana (0 \PYGZhy{} \PYGZgt{} Domingo,}
+\PYG{c+cm}{                                         1 \PYGZhy{}\PYGZgt{} Lunes,}
+\PYG{c+cm}{                                         ...}
+\PYG{c+cm}{                                         6 \PYGZhy{}\PYGZgt{} Sábado */}
+
+\PYG{+w}{    }\PYG{k}{static}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{diasemana}\PYG{p}{[]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}Domingo\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Lunes\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Martes\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdq{}Miércoles\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Jueves\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Viernes\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                                }\PYG{l+s}{\PYGZdq{}Sábado\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{    }\PYG{k}{static}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{mes}\PYG{p}{[]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}Enero\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Febrero\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Marzo\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Abril\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Mayo\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                          }\PYG{l+s}{\PYGZdq{}Junio\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Julio\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Agosto\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Septiembre\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                          }\PYG{l+s}{\PYGZdq{}Octubre\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Novíembre\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Diciembre\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+
+
+\PYG{+w}{    }\PYG{c+cm}{/* mensaje de entrada */}
+\PYG{+w}{    }\PYG{n}{printf}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Rutina de conversión de fecha}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{ Para PARAR, introducir 0 0 0\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{leerentrada}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{aa}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+cm}{/* convertir fecha a día numérico de la semana */}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{dia\PYGZus{}semana}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{convertir}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{aa}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZpc{}s, \PYGZpc{}s \PYGZpc{}d, \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{diasemana}\PYG{p}{[}\PYG{n}{dia\PYGZus{}semana}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{mes}\PYG{p}{[}\PYG{n}{mm}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{aa}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{leerentrada}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{aa}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{leerentrada}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pa}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{leer}\PYG{+w}{ }\PYG{n}{la}\PYG{+w}{ }\PYG{n}{fecha}\PYG{+w}{ }\PYG{n}{numérica}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{o}{/}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{Introducir mm dd aaaa: \PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZpc{}d \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pa}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{return}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{convertir}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{mm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{aa}\PYG{p}{)}\PYG{+w}{ }\PYG{c+cm}{/* convertir una fecha en el}
+\PYG{c+cm}{                                         día de la semana */}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{n}{ndias}\PYG{p}{;}\PYG{+w}{     }\PYG{c+cm}{/* número de días desde el comienzo de 1900 */}
+\PYG{+w}{    }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{n}{nciclos}\PYG{p}{;}\PYG{+w}{   }\PYG{c+cm}{/* número de ciclos de 4 años después de 1900 */}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nanios}\PYG{p}{;}\PYG{+w}{     }\PYG{c+cm}{/* número de años después del último ciclo de 4 años */}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{dia}\PYG{p}{;}\PYG{+w}{        }\PYG{c+cm}{/* día de la semana (0, 1, 2, 3, 4, 5 o 6) */}
+
+\PYG{+w}{    }\PYG{c+cm}{/* conversiones numéricas */}
+\PYG{+w}{    }\PYG{n}{aa}\PYG{+w}{ }\PYG{o}{\PYGZhy{}=}\PYG{+w}{ }\PYG{l+m+mi}{1900}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{ndias}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{long}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{30.42}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{dd}\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* día aproximado del año */}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{ndias}\PYG{+w}{                    }\PYG{c+cm}{/* ajuste para febrero */}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{ndias}\PYG{p}{;}\PYG{+w}{      }\PYG{c+cm}{/* ajuste para marzo\PYGZhy{}ju\PYGZhy{}}
+\PYG{c+cm}{                                               lio */}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{aa}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mm}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{ndias}\PYG{p}{;}\PYG{+w}{ }\PYG{c+cm}{/* ajuste para el año bi\PYGZhy{}}
+\PYG{c+cm}{                                               siesto */}
+
+\PYG{+w}{    }\PYG{n}{nciclos}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{aa}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{                       }\PYG{c+cm}{/* ciclos de 4 años des\PYGZhy{}}
+\PYG{c+cm}{                                               pués de 1900 */}
+\PYG{+w}{    }\PYG{n}{ndias}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{nciclos}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mi}{1461}\PYG{p}{;}\PYG{+w}{                }\PYG{c+cm}{/* añadir días por ciclos}
+\PYG{c+cm}{                                               de 4 años */}
+
+\PYG{+w}{    }\PYG{n}{nanios}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{aa}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{        }\PYG{c+cm}{/* años después del último ciclo de 4 años}
+\PYG{c+cm}{                               */}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{nanios}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{         }\PYG{c+cm}{/* añadir días por años después del último}
+\PYG{c+cm}{                               ciclo */}
+\PYG{+w}{        }\PYG{n}{ndias}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{l+m+mi}{365}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{nanios}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{ndias}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{59}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{ndias}\PYG{p}{;}\PYG{c+cm}{/* ajustar para 1900 (NO año bisiesto) */}
+
+\PYG{+w}{    }\PYG{n}{dia}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ndias}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{return}\PYG{p}{(}\PYG{n}{dia}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
