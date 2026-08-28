@@ -38,7 +38,7 @@
 \PYG{+w}{    }\PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{leerentrada}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pa}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{leer}\PYG{+w}{ }\PYG{n}{la}\PYG{+w}{ }\PYG{n}{fecha}\PYG{+w}{ }\PYG{n}{numérica}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{o}{/}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{leerentrada}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{pa}\PYG{p}{)}\PYG{+w}{ }\PYG{c+cm}{/* leer la fecha numérica */}
 \PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n\PYGZbs{}n}\PYG{l+s}{Introducir mm dd aaaa: \PYGZdq{}}\PYG{p}{);}
 \PYG{+w}{    }\PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZpc{}d \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pm}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{pd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pa}\PYG{p}{);}

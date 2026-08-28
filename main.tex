@@ -130,7 +130,7 @@ main()
     }
 }
 
-void leerentrada (int *pm, int *pd, int *pa) / * leer la fecha numérica * /
+void leerentrada (int *pm, int *pd, int *pa) /* leer la fecha numérica */ 
 {
     printf("\n\nIntroducir mm dd aaaa: ");
     scanf("%d %d %d", pm,  pd, pa);
@@ -341,89 +341,72 @@ double md3(double i, int nulo, doub1e n)
 \end{minted}
 
 \begin{minted}[bgcolor=Beige, bgcolorpadding=0.5em]{c}
-/* ejemplo 10.31 */
+/* ejemplo 10.31 p. 398 */
 
-punteros a enteacepta
-un argumento
-carácter y devuelve
-398 PROGRAMACiÓN EN C
-int *p;             /* p es un puntero a una cantidad entera */
-int *p[10]; /* p es un array de 10
-int (*p) [10]; /* p es un puntero a un array de 10 enteros
-int *p (va id) ; /* p es una función que devuelve un puntero
-                    a entero * /
-int p (char *a); /* p es una función que que es un puntero a
-un entero */
-int *p(char *a); /* p es una función que acepta un argumento
-                    que es un puntero a carácter y devuelve
-                    un puntero a un entero */
-int (*p) (char *a);
-int (*p (char *a)) [10];
-int pichar (*a) [Ji;
-int p(char *a[]);
-int *p (char a [ ] )
-int *p(char (*a) [Ji;
-int *p(char *a[]);
-int (*p) (char (*a) []);
-int * (*p) (char (*a) [J);
-int *(*p)(char *a[]);
-int· (*p[10]) (void);
+int *p;                   /* p es un puntero a una cantidad entera */
+int *p[10];               /* p es un array de 10 punteros a ente-
+                             ros */
+int (*p)[10];             /* p es un puntero a un array de 10 ente-
+                             ros */
+int *p(void);             /* p es una función que devuelve un puntero
+                             a entero */
+int p(char *a);           /* p es una función que acepta un argumento
+                             que es un puntero a carácter y devuelve
+                             un entero */
+int *p(char *a);          /* p es una función que acepta un argu-
+                             mento que es un puntero a carácter y de-
+                             vuelve un puntero a un entero */
+int (*p)(char *a);        /* p es un puntero a una función que acepta
+                             un argumento que es un puntero a carác-
+                             ter y devuelve un entero */
+                             
+int (*p(char *a))[10];    /* p es una función que acepta un argu-
+                             mento que es un puntero a carácter y de-
+                             vuelve un puntero a un array de diez
+                             enteros */
+int p(char (*a)[]);       /* p es una función que acepta un argumento
+                             que es un puntero a un array de caracte-
+                             res y devuelve un entero */
+int p(char *a[]);         /* p es una función que acepta un argumento
+                             que es un array de punteros a caracteres
+                             y devuelve un entero */
+int *p(char a[]);         /* p es una función que acepta un argumento
+                             que es un array de caracteres y devuelve 
+                             un puntero a entero */
+                             
+int *p(char (*a)[]);      /* p es una función que acepta un argumento
+                             que es un puntero a un array de caracte-
+                             res y devuelve un puntero a entero */
+int *p(char *a[]);        /* p es una función que acepta un argu-
+                             mento que es un array de punteros a
+                             caracteres y devuelve un puntero a ente-
+                             ro */
+int (*p)(char (*a)[]);    /* p es un puntero a una función que acepta
+                             un argumento que es un puntero a un array
+                             de caracteres y devuelve un entero */
+int *(*p)(char (*a)[]);   /* p es un puntero a una función que acepta
+                             un argumento que es un puntero a un array
+                             de caracteres y devuelve un puntero a 
+                             entero */
 
+int *(*p)(char *a[]);     /* p es un puntero a una función que acepta
+                             un argumento que es un array de punteros
+                             a caracteres y devuelve un puntero a en-
+                             tero */
+int (*p[10]) void);       /* p es un array de 10 punteros a función;
+                             cada función devuelve un entero */
+int (*p[10])(char a);     /* p es un array de 10 punteros a función;
+                             cada función acepta un argumento que es un
+                             carácter y devuelve un entero */
+int *(*p[10])(char a);    /* p es un array de 10 punteros a función;
+                             cada función acepta un argumento que es
+                             un carácter y devuelve un puntero a en-
+                             tero */
 
-ros */
-
-*/
-
-
-
-/* p es un puntero a una función que acepta
-un argumento que es un puntero a carácter
-y devuelve un entero */
-/* p es una función que acepta un argumento
-que es un puntero a carácter y devue1ve
-un puntero a un array de diez
-enteros */
-/* p es una función que acepta un argumento
-que es un puntero a un array de caracteres
-y devuelve un entero */
-/* p es una función que acepta un argumento
-que es un array de punteros a caracteres
-y devuelve un entero */
-/* p es una función que acepta un argumento
-que es un array de caracteres y devuelve
-un puntéro a entero */
-/* p es una función que acepta un argumento
-que es un puntero a un array de caracteres
-y devuelve un puntero a entero * /
-/* p es una función que acepta un argumento
-que es un array de punteros a
-caracteres y devuelve un puntero a entero
-*/
-/* p es un puntero auna función que acepta
-un argumento que "s un puntero a unarray
-de caracteres y devuelve un. entero * /
-* p es un puntero a una función que aCf,pta
-un argum"nto que es un puntero a un array
-de caractéres y devuelve un puntero a
-entero '* /
-/* p es un pUntero a una función que acepta
-un argumento que es un array de punteros
-a caracteres y devuelve un puntero a entero
-*/
-/ * p es un array dé 10 punteros a fUIlción;
-cada función devue1véun entero * /
-
-int (*p[10]) (char a); /* p es un array de 10 punteros a función;
-cada función acepta un argumento que es un
-carácter y devuelve un entero */
-int * (*p[10]) (char a); /* p es un array de 10 punteros a función;
-cada función acepta un argumento que es
-un carácter y devuelve un puntero a entero
-*/
-int * (*p[10]) (char *a); /* p es un array de 10 punteros a función;
-cada función acepta un argumento que es
-un puntero a carácter y devuelve un puntero
-a entero * /
+int *(*p[10])(char *a);   /* p es un array de 10 punteros a función;
+                             cada función acepta un argumento que es
+                             un puntero a carácter y devuelve un pun-
+                             tero a entero */
 \end{minted}
 
 \end{document}
